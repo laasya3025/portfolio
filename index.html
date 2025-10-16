@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YOUR NAME — Portfolio</title>
+  <meta name="description" content="YOUR ONE-LINE TAGLINE (e.g., Cloud + AI Enthusiast | 3rd Year CSE)" />
+  <link rel="stylesheet"href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <h1>YOUR NAME</h1>
+      <div class="links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="tag">OPEN TO INTERNSHIPS</span>
+        <h2 class="title">YOUR NAME</h2>
+        <p class="subtitle">ONE-LINE SUMMARY: e.g., “3rd-year CSE @ YOUR COLLEGE | Cloud & AI Enthusiast | Building
+          useful things.”</p>
+        <div class="row cta">
+          <a class="btn" href="YOUR_RESUME_LINK.pdf" target="_blank">Download Resume</a>
+          <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank">LinkedIn</a>
+          <a href="mailto:YOUR_EMAIL">Email</a>
+        </div>
+      </div>
+      <img class="avatar" src="assets/IMG_0189.jpg" alt="Your photo (replace placeholder)" />
+    </section>
+
+    <section id="projects">
+      <h2>Highlighted Projects</h2>
+      <p class="muted">Short, results-oriented descriptions. Add GitHub/demo links. Max 6 projects.</p>
+      <div id="projectsGrid" class="grid cols-3"></div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="row">
+        <span class="chip">Languages: C/C++, Java, Python, JavaScript</span>
+        <span class="chip">Web: HTML, CSS, React (basic)</span>
+        <span class="chip">Cloud: Azure (VM, Functions, Blob)</span>
+        <span class="chip">DB: SQL, NoSQL</span>
+        <span class="chip">Tools: Git, GitHub, Linux, Docker (basic)</span>
+      </div>
+    </section>
+
+    <section id="education" class="grid cols-2">
+      <div class="card">
+        <strong>B.E./B.Tech — YOUR BRANCH</strong><br />
+        YOUR COLLEGE NAME (CITY, STATE)<br />
+        <span class="muted">YEAR–YEAR • CGPA: X.Y/10</span><br />
+        <span class="muted">Relevant coursework: DSA, DBMS, OS, CN, Cloud</span>
+      </div>
+      <div class="card">
+        <strong>Certifications & Training</strong>
+        <ul class="muted">
+          <li>AZ-900: Azure Fundamentals (OPTIONAL)</li>
+          <li>InterviewCafe Cloud + AI Workshop (DATE)</li>
+          <li>Any MOOCs / Hackathons</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <ul class="muted">
+        <li><strong>Hackathon Winner</strong> — EVENT NAME (TOPIC). Built FEATURE; ranked #1 out of N teams.</li>
+        <li><strong>Open-source</strong> — CONTRIBUTION SUMMARY with PR link.</li>
+        <li><strong>GATE/CodeChef/LeetCode</strong> — mention stars/rating (if strong).</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="muted">Email: <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a> • Phone: YOUR_PHONE • Location: CITY, STATE</p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> YOUR NAME. Built with HTML/CSS. Hosted on Azure VM (Nginx).
+    </footer>
+  </main>
+
+  <script>
+    // ==== EDIT YOUR PROJECTS HERE ====
+    const PROJECTS = [
+      {
+        title: "PROJECT 1 — SHORT TITLE",
+        about: "1–2 line outcome-focused description (what it does + result).",
+        tech: ["Azure", "Functions", "Cosmos DB"],
+        github: "https://github.com/YOUR_GITHUB/REPO_1",
+        demo: "https://DEMO_LINK_1" // or null
+      },
+      {
+        title: "PROJECT 2 — SHORT TITLE",
+        about: "Brief description with measurable impact, if any.",
+        tech: ["Python", "FastAPI", "PostgreSQL"],
+        github: "https://github.com/YOUR_GITHUB/REPO_2",
+        demo: null
+      },
+      {
+        title: "PROJECT 3 — SHORT TITLE",
+        about: "A simple but polished app is better than a huge unfinished one.",
+        tech: ["React", "Netlify"],
+        github: "https://github.com/YOUR_GITHUB/REPO_3",
+        demo: "https://YOUR-DEPLOYED-APP.example.com"
+      }
+    ];
+
+    // ==== RENDER =====
+    const grid = document.getElementById("projectsGrid");
+    grid.innerHTML = PROJECTS.map(p => `
+      <article class="card">
+        <h3 class="proj-title">${escapeHtml(p.title)}</h3>
+        <p class="muted">${escapeHtml(p.about)}</p>
+        <div class="row" style="margin:8px 0 10px">${(p.tech || []).map(t => <span class="chip">${escapeHtml(t)}</span>).join("")}</div>
+        <p class="proj-links">
+          <a href="${p.github}" target="_blank">GitHub ↗</a>
+          ${p.demo ? <a href="${p.demo}" target="_blank">Live Demo ↗</a> : ""}
+        </p>
+      </article>
+    `).join("");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function escapeHtml(s) { return (s || "").replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m])); }
+  </script>
+</body>
+
+</html>
